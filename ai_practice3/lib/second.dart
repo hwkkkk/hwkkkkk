@@ -87,7 +87,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   // 이미지를 서버로 전송
                   List<int> imageBytes = _image!.readAsBytesSync();
                   String base64Image = base64Encode(imageBytes);
-                  widget.socket.write(base64Image.length); // socket 변수를 사용합니다.
+                  widget.socket.write(base64Image.length.toString().padLeft(16, '0')); // socket 변수를 사용합니다.
                   widget.socket.listen(
                           (List<int> data) {
                         print('Received: ${String.fromCharCodes(data)}');
